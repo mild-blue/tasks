@@ -1,9 +1,5 @@
-import {
-  ComponentRef,
-  Injectable,
-  ViewContainerRef
-} from '@angular/core';
-import {ModalComponent} from '../components/modal/modal.component';
+import { ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Injectable({
   providedIn: 'root'

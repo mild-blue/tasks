@@ -1,9 +1,5 @@
-import {
-  Component,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
-import { ModalService } from './services/modal.service';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { ModalService } from './services/modal/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +7,12 @@ import { ModalService } from './services/modal.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   @ViewChild('modal', { read: ViewContainerRef })
   containerRef?: ViewContainerRef;
 
-  constructor(private modalService: ModalService) {}
+  constructor(private modalService: ModalService) {
+  }
 
   openModal(): void {
     if (!this.containerRef) {
@@ -22,7 +20,6 @@ export class AppComponent {
       return;
     }
 
-    this.modalService
-      .openModal(this.containerRef, 'Modal was successfully opened');
+    this.modalService.openModal(this.containerRef, 'Modal was successfully opened');
   }
 }
