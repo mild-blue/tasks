@@ -1,12 +1,36 @@
 <main>
-  <header>
-    <h1>Locations</h1>
-    <button (click)="openModal()">Open modal</button>
-  </header>
+    <header>
+        <h1>Locations</h1>
+        <button (click)="openModal()">Open modal</button>
+    </header>
 
-  <section>
-    <!-- TODO: Render list of Locations returned from getLocations() method in app/services/api/api.service.ts -->
-  </section>
+    <section>
+        <!-- TODO: Render list of Locations returned from getLocations() method in app/services/api/api.service.ts -->
 
-  <div #modal></div>
+        <div class="container status" *ngIf="loading">Loading data ...</div>
+        <div class="container" *ngIf="nodata">List is empty</div>
+
+        <div class="container" *ngFor="let item of locList">
+
+            <div class="name">
+                {{item.notes}}
+            </div>
+            <div class="address">
+                {{item.address}}
+                <br>
+                {{item.district}}
+                <br>
+                {{item.zipCode}}
+                <br>
+                <br>
+                tel: {{item.phoneNumber}}
+                <br>
+                email: {{item.email}}
+            </div>
+
+        </div>
+
+    </section>
+
+    <div #modal></div>
 </main>

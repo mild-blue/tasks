@@ -22,3 +22,26 @@ main {
     }
   }
 }
+
+.container {
+    display: flex;
+    max-width: 500px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+}
+
+.name {
+    flex: 1;
+    color: rgb(0, 19, 162);
+}
+
+.address {
+    flex: 0.8;
+    font-size: .8em;
+}
+
+.status {
+    justify-content: center;
+    border-bottom: none;
+}
