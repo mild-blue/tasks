@@ -14,15 +14,14 @@ export class ApiService {
 
         const url = "https://ockovani.mild.blue/api/locations"
 
-        const response = await fetch(url);
-        if (response.status == 200) {
-            const data = await response.json();
-            return data;
+        try {
+            const response = await fetch(url)
+                const data = await response.json();
+                return data;
         }
-        else {
+        catch (err) {
+            console.log(err)
             return []
         }
-
     }
-
 }

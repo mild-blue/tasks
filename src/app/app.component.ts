@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { ModalService } from './services/modal/modal.service';
 import { ApiService } from './services/api/api.service';
 
@@ -7,31 +7,30 @@ import { ApiService } from './services/api/api.service';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     locList: any;
     loading: boolean = true;
-    nodata: boolean = false;
+    noData: boolean = false;
+
+    constructor(private modalService: ModalService, private apiService: ApiService) {
+    }
 
     ngOnInit(): void {
         (async () => {
-            let ApiS = new ApiService();
-            let data = await ApiS.getLocations()
+            let data = await this.apiService.getLocations();
 
             // jen pro test dlouheho nacitani ********
-            //await new Promise((resolve, reject) => setTimeout(resolve, 1000));
+            // await new Promise((resolve, reject) => setTimeout(resolve, 1000));
 
-            this.locList = data
+            this.locList = data;
             this.loading = false;
-            if (data.length == 0) this.nodata = true
+            if (data.length == 0) this.noData = true;
         })();
     }
 
     @ViewChild('modal', { read: ViewContainerRef })
     containerRef?: ViewContainerRef;
-
-    constructor(private modalService: ModalService) {
-    }
 
     openModal(): void {
         if (!this.containerRef) {
